@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #fdf8f3;
+  color: #2b2522;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Georgia, Cambria, 'Times New Roman', serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-600 focus:ring-primary-400 shadow-card;
+  }
+  .btn-secondary {
+    @apply btn bg-sage text-white hover:bg-sage-dark focus:ring-sage;
+  }
+  .btn-outline {
+    @apply btn border border-primary text-primary hover:bg-primary-50 focus:ring-primary-400;
+  }
+  .btn-ghost {
+    @apply btn text-charcoal hover:bg-charcoal/5;
+  }
+  .input {
+    @apply w-full rounded-lg border border-charcoal/15 bg-white px-4 py-2.5 text-charcoal placeholder-charcoal/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-charcoal/80;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-soft border border-charcoal/5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dd5b2e55;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dd5b2e99;
+}
+
+/* Toast slide animation */
+.toast-enter {
+  animation: slide-in 0.3s ease-out;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
