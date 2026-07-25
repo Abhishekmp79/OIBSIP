@@ -8,23 +8,21 @@
 const mongoose = require('mongoose');
 
 const customPizzaSchema = new mongoose.Schema({
-  base: { type: String, required: true },
-  sauce: { type: String, required: true },
-  cheese: { type: String, required: true },
-  vegetables: { type: [String], default: [] },
-  unitPrice: { type: Number, required: true },
+    base: { type: String, required: true },
+    sauce: { type: String, required: true },
+    cheese: { type: String, required: true },
+    vegetables: { type: [String], default: [] },
 });
 
 const orderItemSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  quantity: { type: Number, required: true, min: 1 },
-  unitPrice: { type: Number, required: true },
-  image: { type: String, default: '' },
-  custom: { type: customPizzaSchema, default: null },
+    name: { type: String, required: true },
+    quantity: { type: Number, required: true, min: 1 },
+    unitPrice: { type: Number, required: true },
+    image: { type: String, default: '' },
+    custom: { type: customPizzaSchema, default: null },
 });
 
-const orderSchema = new mongoose.Schema(
-  {
+const orderSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     customerName: { type: String, required: true },
     customerEmail: { type: String, required: true },
@@ -37,9 +35,9 @@ const orderSchema = new mongoose.Schema(
 
     // Delivery
     address: {
-      line: { type: String, default: '' },
-      city: { type: String, default: '' },
-      pincode: { type: String, default: '' },
+        line: { type: String, default: '' },
+        city: { type: String, default: '' },
+        pincode: { type: String, default: '' },
     },
     notes: { type: String, default: '' },
 
@@ -52,20 +50,18 @@ const orderSchema = new mongoose.Schema(
 
     // Pipeline status
     status: {
-      type: String,
-      enum: ['Order Received', 'In Kitchen', 'Sent to Delivery', 'Delivered'],
-      default: 'Order Received',
+        type: String,
+        enum: ['Order Received', 'In Kitchen', 'Sent to Delivery', 'Delivered'],
+        default: 'Order Received',
     },
 
     // Inventory decrement flag — prevents double-deduction on retries.
     inventoryDeducted: { type: Boolean, default: false },
-  },
-  { timestamps: true }
-);
+}, { timestamps: true });
 
 // Auto-increment-friendly readable order id.
-orderSchema.virtual('orderCode').get(function () {
-  return 'SH' + String(this._id).slice(-6).toUpperCase();
+orderSchema.virtual('orderCode').get(function() {
+    return 'SH' + String(this._id).slice(-6).toUpperCase();
 });
 
 module.exports = mongoose.model('Order', orderSchema);
