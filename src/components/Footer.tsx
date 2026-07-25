@@ -44,13 +44,13 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-cream/60">Contact</h4>
           <ul className="space-y-2 text-sm text-cream/70">
             <li className="flex items-center gap-2">
-              <Phone size={14} /> +91 90000 12345
+              <Phone size={14} /> +91 81528 49765
             </li>
             <li className="flex items-center gap-2">
-              <Mail size={14} /> hello@slicehouse.com
+              <Mail size={14} /> abhishekm.pujarr@gmail.com
             </li>
             <li className="flex items-center gap-2">
-              <MapPin size={14} /> Bengaluru, India
+              <MapPin size={14} /> Hubli, Karnataka, India
             </li>
           </ul>
         </div>

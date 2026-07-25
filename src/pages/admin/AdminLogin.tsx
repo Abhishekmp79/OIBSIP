@@ -1,6 +1,5 @@
 /**
  * AdminLogin — separate from the user login. Only accepts role === 'admin'.
- * No "register as admin" option anywhere in the app.
  */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +12,7 @@ export function AdminLogin() {
   const navigate = useNavigate();
   const { loginAdmin, isAdmin } = useAuth();
   const { toast } = useToast();
-  const [email, setEmail] = useState('admin@slicehouse.com');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -75,12 +74,6 @@ export function AdminLogin() {
           <button type="submit" disabled={loading} className="btn-primary w-full">
             {loading ? 'Signing in…' : 'Sign in to dashboard'}
           </button>
-
-          <div className="rounded-lg bg-cream p-3 text-xs text-charcoal/60">
-            <p className="font-semibold text-charcoal/80">Demo credentials</p>
-            <p>Email: admin@slicehouse.com</p>
-            <p>Password: Admin@12345</p>
-          </div>
         </form>
       </div>
     </div>

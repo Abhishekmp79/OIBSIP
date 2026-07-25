@@ -1,12 +1,9 @@
 /**
  * Navbar — top navigation for the user-facing site.
- *
- * Shows links based on auth state, a cart button with item count, and a
- * mobile hamburger menu.
  */
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Menu, X, Pizza as PizzaIcon, LogOut, LayoutGrid, Package } from 'lucide-react';
+import { ShoppingBag, Menu, X, Pizza as PizzaIcon, LogOut, LayoutGrid, Package, Shield } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
@@ -25,9 +22,7 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
   };
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium transition hover:text-primary ${
-      isActive ? 'text-primary' : 'text-charcoal/80'
-    }`;
+    `text-sm font-medium transition hover:text-primary ${isActive ? 'text-primary' : 'text-charcoal/80'}`;
 
   return (
     <header className="sticky top-0 z-40 border-b border-charcoal/10 bg-cream/90 backdrop-blur">
@@ -39,27 +34,22 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
           <span className="font-serif text-xl font-bold text-primary">Slice House</span>
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden items-center gap-6 md:flex">
-          <NavLink to="/menu" className={linkClass}>
-            Menu
-          </NavLink>
-          <NavLink to="/builder" className={linkClass}>
-            Build Your Own
-          </NavLink>
-          {isAuthenticated && (
-            <NavLink to="/dashboard" className={linkClass}>
-              Dashboard
-            </NavLink>
-          )}
-          {isAuthenticated && (
-            <NavLink to="/orders" className={linkClass}>
-              My Orders
-            </NavLink>
-          )}
+          <NavLink to="/menu" className={linkClass}>Menu</NavLink>
+          <NavLink to="/builder" className={linkClass}>Build Your Own</NavLink>
+          {isAuthenticated && <NavLink to="/dashboard" className={linkClass}>Dashboard</NavLink>}
+          {isAuthenticated && <NavLink to="/orders" className={linkClass}>My Orders</NavLink>}
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/admin/login"
+            aria-label="Admin login"
+            title="Staff / Admin login"
+            className="hidden rounded-full p-2 text-charcoal/40 transition hover:bg-charcoal/5 hover:text-primary md:inline-flex"
+          >
+            <Shield size={19} />
+          </Link>
           <button
             onClick={onCartClick}
             aria-label="Open cart"
@@ -84,16 +74,11 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
             </div>
           ) : (
             <div className="hidden items-center gap-2 md:flex">
-              <Link to="/login" className="btn-ghost">
-                Login
-              </Link>
-              <Link to="/register" className="btn-primary">
-                Sign up
-              </Link>
+              <Link to="/login" className="btn-ghost">Login</Link>
+              <Link to="/register" className="btn-primary">Sign up</Link>
             </div>
           )}
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setOpen((o) => !o)}
             className="rounded-lg p-2 text-charcoal hover:bg-charcoal/5 md:hidden"
@@ -105,7 +90,6 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
         <div className="border-t border-charcoal/10 bg-cream px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
@@ -121,14 +105,12 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
               </>
             ) : (
               <div className="mt-2 flex flex-col gap-2">
-                <Link to="/login" className="btn-outline" onClick={() => setOpen(false)}>
-                  Login
-                </Link>
-                <Link to="/register" className="btn-primary" onClick={() => setOpen(false)}>
-                  Sign up
-                </Link>
+                <Link to="/login" className="btn-outline" onClick={() => setOpen(false)}>Login</Link>
+                <Link to="/register" className="btn-primary" onClick={() => setOpen(false)}>Sign up</Link>
               </div>
             )}
+            <div className="my-1 border-t border-charcoal/10" />
+            <MobileLink to="/admin/login" icon={Shield} label="Admin Login" onGo={() => setOpen(false)} />
           </div>
         </div>
       )}
