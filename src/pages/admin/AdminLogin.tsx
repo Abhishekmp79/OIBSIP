@@ -2,7 +2,7 @@
  * AdminLogin — separate from the user login. Only accepts role === 'admin'.
  */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Lock } from 'lucide-react';
 import { api } from '../../api';
 import { useAuth } from '../../context/AuthContext';
@@ -75,6 +75,11 @@ export function AdminLogin() {
             {loading ? 'Signing in…' : 'Sign in to dashboard'}
           </button>
         </form>
+        <p className="mt-5 text-center">
+          <Link to="/" className="text-sm text-cream/60 transition hover:text-primary">
+            ← Back to website
+          </Link>
+        </p>
       </div>
     </div>
   );

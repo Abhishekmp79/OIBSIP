@@ -55,7 +55,7 @@ function AdminShell() {
   const handleLogout = () => {
     logout();
     toast({ type: 'info', message: 'Logged out of admin' });
-    navigate('/admin/login');
+    navigate('/');
   };
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>

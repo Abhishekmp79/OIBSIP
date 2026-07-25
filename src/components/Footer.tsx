@@ -1,5 +1,5 @@
 /**
- * Footer — simple branded footer with quick links + admin shortcut.
+ * Footer — branded footer with quick links + contact.
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -34,9 +34,6 @@ export function Footer() {
             <li>
               <Link to="/dashboard" className="hover:text-primary">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/admin/login" className="hover:text-primary">Admin Login</Link>
-            </li>
           </ul>
         </div>
 
@@ -56,7 +53,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-cream/10 py-4 text-center text-xs text-cream/50">
-        © {new Date().getFullYear()} Slice House · Crafted with 🍕 in Bengaluru
+        © {new Date().getFullYear()} Slice House · Crafted with 🍕 in Hubli
       </div>
     </footer>
   );
