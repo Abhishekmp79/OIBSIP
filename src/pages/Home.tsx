@@ -53,10 +53,10 @@ export function Home() {
             <div className="animate-pop relative">
               <div className="absolute inset-0 -rotate-12 scale-110 rounded-full bg-primary/20 blur-3xl" />
               <img
-                src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='45%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23fbe2d4'/%3E%3Cstop offset='60%25' stop-color='%23e87a4f'/%3E%3Cstop offset='100%25' stop-color='%23a73618'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='400' height='400' fill='transparent'/%3E%3Ccircle cx='200' cy='200' r='170' fill='url(%23g)'/%3E%3Ccircle cx='200' cy='200' r='170' fill='none' stroke='%23872e18' stroke-width='10'/%3E%3Ccircle cx='150' cy='160' r='20' fill='%23fdf8f3'/%3E%3Ccircle cx='250' cy='170' r='18' fill='%23fdf8f3'/%3E%3Ccircle cx='170' cy='250' r='18' fill='%23fdf8f3'/%3E%3Ccircle cx='245' cy='245' r='20' fill='%23fdf8f3'/%3E%3Ccircle cx='205' cy='200' r='13' fill='%23fdf8f3'/%3E%3Ccircle cx='145' cy='205' r='10' fill='%23557267'/%3E%3Ccircle cx='260' cy='215' r='10' fill='%23557267'/%3E%3Ccircle cx='210' cy='150' r='9' fill='%23557267'/%3E%3C/svg%3E"
-                alt="Delicious pizza"
-                className="relative w-80 drop-shadow-2xl"
-              />
+  src="/hero-pizza.png"
+  alt="Delicious pizza"
+  className="relative h-80 w-80 rounded-full object-cover drop-shadow-2xl"
+/>
             </div>
           </div>
         </div>
